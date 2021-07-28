@@ -4,6 +4,7 @@ var mainState = {
         // Load the bird sprite
         game.load.image('bird', 'assets/bird.png'); 
         game.load.image('pipe', 'assets/pipe.png');
+        game.load.audio('jump', 'assets/jump.wav'); 
     },
     
     create: function() { 
@@ -36,7 +37,9 @@ var mainState = {
             { font: "30px Arial", fill: "#ffffff" });  
         
         // Move the anchor to the left and downward
-        this.bird.anchor.setTo(-0.2, 0.5);      
+        this.bird.anchor.setTo(-0.2, 0.5);  
+        
+        this.jumpSound = game.add.audio('jump'); 
     },
     
     update: function() {
@@ -65,6 +68,8 @@ var mainState = {
 
         // And start the animation
         animation.start(); 
+
+        this.jumpSound.play(); 
     },
 
     // Restart the game
